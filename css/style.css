@@ -1,0 +1,39 @@
+#post-body #normal-sortables .submitbox .submitdelete:hover {
+  color: #FFF;
+}
+
+.featured-image-buttons .submitdelete{
+  float: right;
+}
+
+.button-thumb > img {
+	display: block;
+	margin-bottom: 12px;
+}
+
+.custom-banner {
+	width: 48%;
+	margin-right: 1%;
+	display: inline-block;
+	vertical-align: top
+}
+
+.sponsor_meta {
+	width: 29%;
+	margin-right: 1%;
+	display: inline-block;
+	vertical-align: top
+}
+
+
+#post-body .custom-banner .hndle {
+	cursor: pointer;
+}
+
+.banner-thumb-admin {
+	width: 100%;
+}
+
+.sponsor_meta .banner-thumb-admin{
+	width: auto;
+}
