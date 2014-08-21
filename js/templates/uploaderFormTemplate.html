@@ -1,0 +1,35 @@
+{{#each banners}}
+<li id="banner-{{menu_order}}" data-banner-id="{{ID}}" class="banner-form">
+        <form>
+            <h4>Add a Title</h4>
+            <input class="widefat title" width="30" type="text" value="{{post_title}}" />
+            <h4>Add an Image</h4>
+            {{#if image_src}}
+                <div class="thumb-wrap">
+                    <img src="{{image_src}}" class="banner-thumb" />
+                </div>
+                <a href="#" class="add-image-button">Choose Another Image</a>
+            {{else}}
+                <div class="thumb-wrap"></div>
+                <a href="#" class="add-image-button">Choose an Image</a>
+            {{/if}}
+            <h4>Caption</h4>
+            <textarea class="caption" type="text" rows="6" cols="30">{{post_content}}</textarea>
+            {{#if shortcode}}
+                <h4>Shortcode</h4>
+                <input class="widefat shortcode" width="30" type="text" value="{{shortcode}}" disabled />
+            {{/if}}
+            <div class="banner-button-row">
+                {{#if ID}}
+                    <a href="#" data-type="update" class="banner-update button">Update</a>
+                {{else}}
+                    <a href="#" data-type="save" class="banner-save button">Save</a>
+                {{/if}}
+                {{#if ID}}
+                    <a class="delete-banner">Delete Banner</a>
+                {{/if}}
+            </div>
+        </form>
+    </li>
+{{/each}}
+

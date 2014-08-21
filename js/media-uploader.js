@@ -1,8 +1,42 @@
 //Initial Upload Image
 
-var CustomBanners = function(){
+(function($) {
+    
+    var WP_images = function() {
+        
+        var _this = this,
+            $currentHREF,
+            $thumb,
+            $textArea,
+            $title,
+            $inputLink,
+            $pageLink,
+            $saveButton;
 
-  this.fileFrame;
+        var toTitleCase = function(str) {
+            return str.replace(/\w\S*/g, function(txt) {
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            });
+        }
+
+        this.buttons = {};
+
+        this.attachElements = function($container) {
+        };
+
+        this.uploadMedia = function() {
+
+        };
+    };
+
+    $(document).ready(function(){
+        var wp_images = new WP_images();
+        wp_images.buttons.$save = $();
+    });
+
+})(jQuery);
+
+var CustomBanners = function(){
 
 	var _this = this;
 
@@ -21,10 +55,6 @@ var CustomBanners = function(){
       $thumb =  jQuery( '#thumb-wrap-' + metaboxID ); 
 
     this.postID = postID;
-
-    var toTitleCase = function(str){
-      return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-    }
 
     var setThumb = function(container, src, id){
 
@@ -184,7 +214,7 @@ var CustomBanners = function(){
       cookie: encodeURIComponent(document.cookie)
     }, 
     function( str ) {
-      if( str.trim() == '0' ) {
+      if( str.trim() === '0' ) {
         return setPostThumbnailL10n.error;
       } else {
 				saveState(

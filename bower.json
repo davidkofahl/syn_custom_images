@@ -1,0 +1,25 @@
+{
+    "name": "syn custom banners",
+    "version": "0.0.1",
+    "authors": [
+        "David T. Kofahl <david.kofahl@mediastorm.com>"
+    ],
+    "main": "uploader.js",
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "app/js",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+		"requirejs": "latest",
+		"jquery": "latest",
+        "handlebars": "latest",
+        "zeroclipboard": "latest",
+        "requirejs-text": "latest"
+    }
+}

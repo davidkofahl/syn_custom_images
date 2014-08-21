@@ -1,39 +1,49 @@
-#post-body #normal-sortables .submitbox .submitdelete:hover {
-  color: #FFF;
+#syn_custom_banner {
+    background: #FAFAFA;
 }
 
-.featured-image-buttons .submitdelete{
-  float: right;
+#syn_custom_banner .hndle {
+    background: #FFF;
 }
 
-.button-thumb > img {
+.banner-thumb {
 	display: block;
+    width: 100%;
 	margin-bottom: 12px;
 }
 
-.custom-banner {
-	width: 48%;
+.banner-form {
+	width: 44%;
 	margin-right: 1%;
 	display: inline-block;
-	vertical-align: top
+	vertical-align: top;
+    padding: 1.5% 2%;
+    border: 1px solid #DFDFDF;
+    background: #FFF;
 }
 
-.sponsor_meta {
-	width: 29%;
-	margin-right: 1%;
-	display: inline-block;
-	vertical-align: top
+.banner-form form textarea {
+    width: 100%;
 }
-
 
 #post-body .custom-banner .hndle {
 	cursor: pointer;
 }
 
-.banner-thumb-admin {
-	width: 100%;
+.delete-banner {
+    color: red;
+    float: right;
+    cursor: pointer;
+    text-decoration: none;
 }
 
-.sponsor_meta .banner-thumb-admin{
-	width: auto;
+.delete-banner:hover{
+    text-decoration: underline;
+    color: red;
+}
+
+.banner-button-row {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #DFDFDF;
 }
