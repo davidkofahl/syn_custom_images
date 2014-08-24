@@ -78,6 +78,7 @@
             
         this.uploadBanner = function($form, $button) {
             var $image = $form.find('.banner-thumb'),
+                $imageTitle = $form.find('.image-title'),
                 $textArea = $form.find('.caption'),
                 $title = $form.find('.title'),
                 $delete = $form.find('.delete-banner'),
@@ -86,19 +87,24 @@
                     'image_src': $image.attr('src'),
                     'caption': $textArea.val(),
                     'title': $title.val(),
-                    'menu_order': $forms.index($form)
+                    'menu_order': $forms.index($form),
                 };
 
-            data.banner_id = $form.data().bannerId ? $form.data().bannerId : null; 
-            $button.html('Saving...');
+            if (data.image_src && data.image_src.length) {
+                data.banner_id = $form.data().bannerId ? $form.data().bannerId : null; 
+                $button.html('Saving...');
 
-            _this[type](data).then(function(response) {
-                var response = {
-                    banners: [$.parseJSON(response)]
-                };
-                _this.attachForm(response, $form, true);
-            });
-            
+                _this[type](data).then(function(response) {
+                    var response = {
+                        banners: [$.parseJSON(response)]
+                    };
+                    _this.attachForm(response, $form, true);
+                });
+            } else {
+                $imageTitle.html('Image is required<sup>*</sup>').css('color', 'red');
+                $button.html('Image is required');
+            }
+                
         };
 
         this.openUploader = function($form){
@@ -149,8 +155,8 @@
             
             this.baseData = {
                 parent_id: $formWrap.data().postId,
-                nonce: $formWrap.data().nonce,
-                cookie: encodeURIComponent(document.cookie)
+                nonce: $formWrap.data().metaNonce,
+                cookie: encodeURIComponent(document.cookie),
             };
 
             var banners = $.parseJSON(window.uploaderData.banners);

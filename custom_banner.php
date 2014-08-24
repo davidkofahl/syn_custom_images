@@ -66,8 +66,7 @@ if( !class_exists( 'Syn_wp_images' ) ) {
             $this->slug           = $this->base_label;
             $this->id             = $this->post_meta_key . $this->base_label;
             $this->post_meta_flag = $this->post_meta_key . $this->base_label;
-            $this->nonce          = $this->post_meta_key . $this->id . $this->base_label;
-            $this->fields         = $fields;
+            $this->nonce          = $this->id;
             $this->meta_class     = $meta_class;
             $this->post_type_edit = $post_type; // specify post_type that metaboxes are available for; defaults to page;
           
@@ -189,7 +188,9 @@ if( !class_exists( 'Syn_wp_images' ) ) {
             $contents = preg_replace(array('/\r/', '/\n/'), '', $contents);
             fclose($handle);
 
-            echo '<ul data-post-id="' . $post_ID . '" id="custom-banner-form-wrap"></ul>';
+            $nonce_field = wp_create_nonce($this->nonce);
+
+            echo '<ul data-meta-nonce="' . $nonce_field . '" data-post-id="' . $post_ID . '" id="custom-banner-form-wrap"></ul>';
             echo '<button id="add-new-banner" class="button-primary">Add New Banner</button>';
             echo "<script>window.uploaderData = {banners: '" . json_encode($banners) . "', template: '" . $contents . "'}</script>";
         }
@@ -207,7 +208,7 @@ if( !class_exists( 'Syn_wp_images' ) ) {
                 die( '-1' );
             }
 
-            //check_ajax_referer( $this->nonce, '_ajax_nonce' );
+            check_ajax_referer( $this->nonce, 'nonce' );
 
             $post = array(
                 'menu_order'   => $menu_order,
@@ -255,6 +256,8 @@ if( !class_exists( 'Syn_wp_images' ) ) {
                 die( '-1' );
             }
 
+            check_ajax_referer( $this->nonce, 'nonce' );
+
             if (!empty($banner_id)){
                 $post = array(
                     'ID'           => $banner_id,
@@ -298,7 +301,7 @@ if( !class_exists( 'Syn_wp_images' ) ) {
                 die( '-1' );
             }
 
-            //check_ajax_referer( $this->nonce, '_ajax_nonce' );
+            check_ajax_referer( $this->nonce, 'nonce' );
             
             if( !empty( $banner_id ) ) {
     
