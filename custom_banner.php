@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Custom 
+Plugin Name: Image Nuggets
 Description: Adds Editable Banners with Titles and Captions to Pages 
 Version: 0.2
 Author: Pure Cobalt
