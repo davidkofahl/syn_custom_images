@@ -3,8 +3,8 @@
 Plugin Name: Image Nuggets
 Description: Adds Editable Banners with Titles and Captions to Pages 
 Version: 0.2
-Author: Pure Cobalt
-Author URI: http://purecobalt.com
+Author: David T. Kofahl 
+Author URI: http://studiosyndicate.org
 */
 
 if( !class_exists( 'Syn_wp_images' ) ) {
@@ -21,8 +21,6 @@ if( !class_exists( 'Syn_wp_images' ) ) {
         private $post_meta_flag     = null;
         private $calling_post       = null;
         private $nonce              = null;
-
-        public $plugin_dir          = 'syn_wp_custom_banners'; //dirname(__FILE__)
 
         private $default_args       = array(
             'base_label'    => 'Custom Banner',
@@ -96,7 +94,7 @@ if( !class_exists( 'Syn_wp_images' ) ) {
             wp_enqueue_script('WP_images',  plugins_url('', __FILE__) . '/js/uploader.js');
             wp_enqueue_script('zeroclipboard',  plugins_url('', __FILE__) . '/js/lib/zeroclipboard/dist/ZeroClipboard.min.js');
             wp_enqueue_script('handlebars',  plugins_url('', __FILE__) . '/js/lib/handlebars/handlebars.min.js');
-            wp_enqueue_style('banner-styles', plugins_url($this->plugin_dir).'/css/style.css');
+            wp_enqueue_style('banner-styles', plugins_url('', __FILE__).'/css/style.css');
 
             $this->create_banner_post_type();
             add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
@@ -321,7 +319,7 @@ if( !class_exists( 'Syn_wp_images' ) ) {
 
             $args = array(
                 'post_parent'       => $post_id,
-                'post_type'         => $this->post_type,
+                'post_type'         => 'syn_custom_banner',
                 'orderby'           => 'menu_order',
             	'order'             => 'ASC', 
 	            'posts_per_page'    => -1,
