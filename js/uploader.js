@@ -196,8 +196,11 @@
     };
 
     $(document).ready(function() {
-        var wp_images = new WP_images();
-        wp_images.start();
+
+        if ($('#syn_custom_banner').length) {
+            var wp_images = new WP_images();
+            wp_images.start();
+        }
     });
     
 })(jQuery);
